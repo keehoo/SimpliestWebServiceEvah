@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -20,9 +21,12 @@ public class Serv {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Contact> dummyContact() {
-        contactList.add(new Contact("dupa"));
-        contactList.add(new Contact("dupeczka"));
-        return contactList;
+      //  contactList.add(new Contact("dupa"));
+      //  contactList.add(new Contact("dupeczka"));
+
+        System.out.println("Current size of the contact list: "+contactList.size());
+        if (!contactList.isEmpty()) return contactList;
+        else return Collections.EMPTY_LIST;
     }
 
 
@@ -30,6 +34,8 @@ public class Serv {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addContact(@Valid Contact contat) {
+
+        System.out.println("Contact to be added: "+contat.getName());
 
         contactList.add(contat);
         return Response.accepted().build();
