@@ -23,7 +23,7 @@ public class MainPageServlet extends HttpServlet {
 
         req.setAttribute("variable", passedData);
         req.setAttribute("list", listToBePassed);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/main.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/pages/index.jsp");
         dispatcher.forward(req, resp);
     }
 
